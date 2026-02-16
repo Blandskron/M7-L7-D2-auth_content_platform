@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Auth Content Platform</title>
+    {% load static %} <!-- Uso de staticfiles -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<h1>Plataforma Django Core</h1>
+
+{% if user.is_authenticated %}
+    <p>Usuario: {{ user.username }}</p>
+    <a href="{% url 'dashboard' %}">Dashboard</a> |
+    <a href="{% url 'content_list' %}">Contenidos</a> |
+    <a href="{% url 'model_inspection' %}">Inspección Modelos</a> |
+    <a href="{% url 'logout' %}">Salir</a>
+{% else %}
+    <a href="{% url 'login' %}">Login</a>
+{% endif %}
+
+<hr>
+
+{% if messages %}
+    {% for message in messages %}
+        <p>{{ message }}</p>
+    {% endfor %}
+{% endif %}
+
+{% block content %}{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+{% extends 'core/base.html' %}
+{% block content %}
+
+<h2>Inspección de Modelos Preinstalados</h2>
+
+<h3>Campos de User (auth)</h3>
+<ul>
+{% for field in user_fields %}
+    <li>{{ field }}</li>
+{% endfor %}
+</ul>
+
+<h3>Campos de Session (sessions)</h3>
+<ul>
+{% for field in session_fields %}
+    <li>{{ field }}</li>
+{% endfor %}
+</ul>
+
+<h3>Campos de ContentType (contenttypes)</h3>
+<ul>
+{% for field in contenttype_fields %}
+    <li>{{ field }}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}

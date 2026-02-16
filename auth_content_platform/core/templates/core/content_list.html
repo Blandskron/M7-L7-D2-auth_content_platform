@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+{% block content %}
+
+<h2>Contenidos</h2>
+
+<form method="post" action="{% url 'content_create' %}">
+    {% csrf_token %}
+    <input type="text" name="title" placeholder="Título">
+    <textarea name="body" placeholder="Contenido"></textarea>
+    <button type="submit">Crear</button>
+</form>
+
+<hr>
+
+<ul>
+{% for item in contents %}
+    <li>{{ item.title }} - {{ item.created_by.username }}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}
